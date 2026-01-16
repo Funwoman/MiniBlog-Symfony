@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Repository\ArticleRepository;
+use app\Repository\ArticleRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -25,6 +25,9 @@ class Article
 
     #[ORM\Column]
     private ?bool $isPublished = null;
+
+    #[ORM\ManyToOne]
+    private ?Author $author = null;
 
     public function getId(): ?int
     {
@@ -75,6 +78,18 @@ class Article
     public function setIsPublished(bool $isPublished): static
     {
         $this->isPublished = $isPublished;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?Author
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?Author $author): static
+    {
+        $this->author = $author;
 
         return $this;
     }
