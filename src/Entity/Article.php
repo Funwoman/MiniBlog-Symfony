@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use app\Repository\ArticleRepository;
 use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
@@ -15,9 +16,13 @@ class Article
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Ce champ doit être rempli")]
+    #[Assert\Length(min: 5)]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank(message: "Ce champ doit être rempli")]
+    #[Assert\Length(min: 20)]
     private ?string $content = null;
 
     #[ORM\Column]
@@ -27,10 +32,12 @@ class Article
     private ?bool $isPublished = null;
 
     #[ORM\ManyToOne]
+    #[Assert\NotNull()]
     private ?Author $author = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotNull()]
     private ?Category $category = null;
 
     public function getId(): ?int

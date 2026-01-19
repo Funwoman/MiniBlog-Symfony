@@ -1,3 +1,4 @@
+@import "./Composants/bouton.css";
 body {
-    background-color: skyblue;
+    background-color: rgb(248, 249, 250);
 }

@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\AuthorRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: AuthorRepository::class)]
 class Author
@@ -14,9 +16,13 @@ class Author
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Le champ doit être rempli")]
+    #[Assert\Length(min: 3)]
     private ?string $name = null;
 
     #[ORM\Column(length: 180)]
+    #[Assert\NotBlank(message: "Le champ doit être rempli")]
+    #[Assert\Email(message: "Mail invalide")]
     private ?string $email = null;
 
     public function getId(): ?int
