@@ -40,4 +40,16 @@ class ArticleRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+
+    public function findPublishedArticles(): array
+{
+    return $this->createQueryBuilder('a')
+        ->where('a.isPublished = :published')
+        ->setParameter('published', true)
+        ->orderBy('a.createdAt', 'DESC')
+        ->getQuery()
+        ->getResult();
+}
+
 }

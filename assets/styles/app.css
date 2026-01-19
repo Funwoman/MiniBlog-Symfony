@@ -1,4 +1,79 @@
-@import "./Composants/bouton.css";
+/* @import "./Composants/bouton.css";
 body {
     background-color: rgb(248, 249, 250);
+} */
+
+.site-header {
+    width: 100%;
+    background-color: #1f2933;
+    border-bottom: 1px solid #e5e7eb;
 }
+
+.header-container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 24px;
+    padding-right: 24px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.logo a:hover {
+    color: #d1d5db;
+}
+
+.navigation-list {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+}
+
+.navigation-list a {
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+    position: relative;
+}
+
+.navigation-list a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background-color: #ffffff;
+    transition: width 0.3s ease;
+}
+
+.navigation-list a:hover::after {
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .navigation-list {
+        gap: 20px;
+    }
+}
+
+
