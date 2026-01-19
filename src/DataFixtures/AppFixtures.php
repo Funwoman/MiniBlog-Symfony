@@ -40,11 +40,11 @@ class AppFixtures extends Fixture
 
         $category3 = new Category();
         $category3->setName("Sentimental");
-        $manager->persist($category1);
+        $manager->persist($category3);
 
         $category4 = new Category();
         $category4->setName("Technique");
-        $manager->persist($category1);
+        $manager->persist($category4);
 
         $article1 = new Article();
         $article1->setTitle("Le fond du puits");
